@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+<h:form>
+<p:growl></p:growl>
+<h:panelGrid columns="3">
+<p:outputLabel id="lname" value="Name" for="name"></p:outputLabel>
+<p:inputText id="name" value="#{employeeBean.employee.name}" required="true" requiredMessage="input required" validatorMessage="min 3">
+<p:ajax event="blur" update="message lname" ></p:ajax>
+<f:validateLength minimum="3" maximum="7"></f:validateLength>
+</p:inputText>
+<p:message for="name" id="message"/>
+<h:outputText value="Last Name"></h:outputText>
+<p:inputText value="#{employeeBean.employee.lastName}"></p:inputText>
+<p:commandButton action="#{employeeBean.ajouterEmployee()}"  value="Valider" update="@form" />
+</h:panelGrid>
+
+</h:form>
+</body> 
+</html>
